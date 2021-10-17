@@ -62,7 +62,7 @@ public class JogoController {
         } while (menuAberto);
     }
 
-    private static void menuFiltroProdutora() throws URISyntaxException {
+    public static void menuFiltroProdutora() throws URISyntaxException {
 
         boolean menuAberto = true;
         do {
@@ -85,34 +85,28 @@ public class JogoController {
 
             } else {
                 List<Jogo> jogoList = new ArrayList<>();
-                List<Jogo> jogoListFiltrada = new ArrayList<>();
                 Path caminho = Paths.get(ClassLoader.getSystemResource("vendas-games.csv").toURI());
                 jogoList = CsvUtils.lerArquivoCsv(caminho);
 
                 switch (opcao) {
                     case 1:
-                        jogoListFiltrada = JogoService.lerListaPorProdutora(jogoList, Produtora.Activision);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraProdutoraEEscreveNovoArquivo(jogoList, Produtora.Activision);
                         break;
 
                     case 2:
-                        jogoListFiltrada = JogoService.lerListaPorProdutora(jogoList, Produtora.MicrosoftGameStudios);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraProdutoraEEscreveNovoArquivo(jogoList, Produtora.MicrosoftGameStudios);
                         break;
 
                     case 3:
-                        jogoListFiltrada = JogoService.lerListaPorProdutora(jogoList, Produtora.Nintendo);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraProdutoraEEscreveNovoArquivo(jogoList, Produtora.Nintendo);
                         break;
 
                     case 4:
-                        jogoListFiltrada = JogoService.lerListaPorProdutora(jogoList, Produtora.SonyComputerEntertainment);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraProdutoraEEscreveNovoArquivo(jogoList, Produtora.SonyComputerEntertainment);
                         break;
 
                     case 5:
-                        jogoListFiltrada = JogoService.lerListaPorProdutora(jogoList, Produtora.TakeTwoInteractive);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraProdutoraEEscreveNovoArquivo(jogoList, Produtora.TakeTwoInteractive);
                         break;
 
                     default:
@@ -123,7 +117,7 @@ public class JogoController {
         } while (menuAberto);
     }
 
-    private static void menuFiltroPlataforma() throws URISyntaxException {
+    public static void menuFiltroPlataforma() throws URISyntaxException {
 
         boolean menuAberto = true;
 
@@ -156,48 +150,39 @@ public class JogoController {
 
                 switch (opcao) {
                     case 1:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.PS4);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.PS4);
                         break;
 
                     case 2:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.PC);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.PC);
                         break;
 
                     case 3:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.XB);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.XB);
                         break;
 
                     case 4:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.Wii);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.Wii);
                         break;
 
                     case 5:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.GB);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.GB);
                         break;
 
                     case 6:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.GBA);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.GBA);
                         break;
 
                     case 7:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.X360);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.X360);
                         break;
 
                     case 8:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.PS3);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.PS3);
                         break;
 
                     case 9:
-                        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, Plataforma.PS2);
-                        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+                        filtraPlataformaEEscreveNovoArquivo(jogoList, Plataforma.PS2);
                         break;
 
                     default:
@@ -206,5 +191,17 @@ public class JogoController {
                 }
             }
         } while (menuAberto);
+    }
+
+    public static void filtraProdutoraEEscreveNovoArquivo(List<Jogo> jogoList, Produtora produtora) {
+        List<Jogo> jogoListFiltrada;
+        jogoListFiltrada = JogoService.lerListaPorProdutora(jogoList, produtora);
+        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
+    }
+
+    public static void filtraPlataformaEEscreveNovoArquivo(List<Jogo> jogoList, Plataforma plataforma) {
+        List<Jogo> jogoListFiltrada;
+        jogoListFiltrada = JogoService.lerListaPorPlataforma(jogoList, plataforma);
+        JogoService.escreverListaFiltradaEmArquivoCSV(jogoListFiltrada);
     }
 }
